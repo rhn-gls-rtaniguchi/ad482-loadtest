@@ -1,0 +1,19 @@
+---
+- name: Run first GE
+  hosts: workstations
+  gather_facts: False
+  become: False
+  environment:
+    SKIP_WORKSPACE_CONFIG: True
+  tasks:
+  - name: Create directory for AD482
+    ansible.builtin.file:
+      path: /home/student/AD482
+      state: directory
+  - name: configure file to setup the kafka cluster
+    ansible.builtin.template:
+      src: templates/ad482-workspace.json.k2
+      dest: /home/student/.grading/ad482-workspace.json
+  - name: Configure python virtual environment
+    ansible.builtin.shell:
+      cmd: "cd ~/AD482 && python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install rht-labs-ad482 --extra-index-url https://pypi.apps.tools-na.prod.nextcle.com/repository/labs/simple && lab select ad482 && lab start eda-setup"

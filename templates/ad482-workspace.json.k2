@@ -1,0 +1,11 @@
+{
+  "kafka_bootstrap_server": "my-cluster-kafka-bootstrap-{{ username }}-kafka-cluster.apps.na46a.prod.ole.redhat.com",
+  "kafka_bootstrap_port": 443,
+  "kafka_cert_path": "/home/student/AD482/kafka-cluster.crt",
+  "kafka_cluster_namespace": "{{ username  }}-kafka-cluster",
+  "ocp_api": "https://api.na46a.prod.ole.redhat.com:6443",
+  "ocp_username": "{{ username }}",
+  "ocp_password": "{{ password }}",
+  "filepath": "/home/student/.grading/ad482-workspace.json",
+  "workdir": "/home/student/AD482"
+}
